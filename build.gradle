@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group='com.elevenware'
+version='0.1-SNAPSHOT'
+archivesBaseName='namingthings4j'
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+   compile "org.yaml:snakeyaml:1.13"
+   testCompile "junit:junit:4.11"
+}
