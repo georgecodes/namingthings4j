@@ -23,8 +23,9 @@ public class SimpleNameService implements NameService {
         Word adjective = adjectiveList.randomWord();
         Word noun = nounList.randomWord();
         if(suffixNumber) {
-            return String.format("%s-s%-%4d", adjective.getText(), noun.getText(), random.nextInt(9999));
+            return String.format("%s-%s-%4d", adjective.getText(), noun.getText(), random.nextInt(9999));
         }
         return String.format("%s-%s", adjective.getText(), noun.getText());
     }
+
 }
