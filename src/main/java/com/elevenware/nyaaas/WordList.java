@@ -10,11 +10,8 @@ import java.util.Random;
 public class WordList {
 
     private final Map<String, Object> base;
-    private static final Random random;
+    private final RandomNumber random = new RandomNumber();
 
-    static {
-        random = new Random(Long.getLong("random.seed", System.currentTimeMillis()));
-    }
 
     public WordList(String root) {
 

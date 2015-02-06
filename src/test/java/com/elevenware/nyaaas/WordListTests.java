@@ -19,26 +19,26 @@ public class WordListTests {
     @Test
     public void findRandomWordWithSpecificLetter() {
 
-        System.setProperty("random.seed", "2904");
+        RandomNumber.seed(8387L);
 
         WordList wordList = new WordList("adjectives.yaml");
         Word word = wordList.getRandomWordStartingWith("a");
 
         assertNotNull(word);
-        assertEquals("annoying", word.getText());
+        assertEquals("animated", word.getText());
 
     }
 
     @Test
     public void generateRandomWord() {
 
-        System.setProperty("random.seed", "83764");
+        RandomNumber.seed(2272L);
 
         WordList wordList = new WordList("adjectives.yaml");
         Word word = wordList.randomWord();
 
         assertNotNull(word);
-        assertEquals("maddening", word.getText());
+        assertEquals("sordid", word.getText());
 
     }
 
