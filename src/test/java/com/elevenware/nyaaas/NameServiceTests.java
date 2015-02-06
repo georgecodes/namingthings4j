@@ -13,7 +13,7 @@ public class NameServiceTests {
         NameService nameService = new SimpleNameService();
         String randomName = nameService.getAdjectiveNounPair();
 
-        assertEquals("xenophobic-honey", randomName);
+        assertEquals("xylophagic-honey", randomName);
 
     }
 
