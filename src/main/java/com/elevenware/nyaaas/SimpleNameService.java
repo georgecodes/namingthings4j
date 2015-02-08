@@ -1,7 +1,5 @@
 package com.elevenware.nyaaas;
 
-import java.util.Random;
-
 public class SimpleNameService implements NameService {
 
     private final WordList adjectiveList;
@@ -9,8 +7,8 @@ public class SimpleNameService implements NameService {
     private RandomNumber random = new RandomNumber();
 
     public SimpleNameService() {
-        adjectiveList = new WordList("adjectives.yaml");
-        nounList = new WordList("nouns.yaml");
+        adjectiveList = new YamlWordList("adjectives.yaml");
+        nounList = new YamlWordList("nouns.yaml");
     }
 
     @Override

@@ -8,7 +8,7 @@ public class WordListTests {
     @Test
     public void findFirstWordWithSpecificLetter() {
 
-        WordList wordList = new WordList("adjectives.yaml");
+        WordList wordList = new YamlWordList("adjectives.yaml");
         Word word = wordList.getFirstWordStartingWith("a");
 
         assertNotNull(word);
@@ -21,7 +21,7 @@ public class WordListTests {
 
         RandomNumber.seed(8387L);
 
-        WordList wordList = new WordList("adjectives.yaml");
+        WordList wordList = new YamlWordList("adjectives.yaml");
         Word word = wordList.getRandomWordStartingWith("a");
 
         assertNotNull(word);
@@ -34,7 +34,7 @@ public class WordListTests {
 
         RandomNumber.seed(2272L);
 
-        WordList wordList = new WordList("adjectives.yaml");
+        WordList wordList = new YamlWordList("adjectives.yaml");
         Word word = wordList.randomWord();
 
         assertNotNull(word);
