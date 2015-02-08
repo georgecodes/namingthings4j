@@ -21,7 +21,7 @@ public class TaggedWordBucketTests {
         bucket.visit(allByTag);
         Set<Word> nouns = allByTag.words();
 
-                assertNotNull(nouns);
+        assertNotNull(nouns);
         assertEquals(4, nouns.size());
 
     }
@@ -29,17 +29,23 @@ public class TaggedWordBucketTests {
     @Test
     public void findWordsByMultipleTags() {
 
-        Set<Word> nouns = bucket.getAllBy(nounTag, rude);
+        BucketVisitor allByTags = new AllByTagBucketVisitor(nounTag, rude);
+
+        bucket.visit(allByTags);
+        Set<Word> nouns = allByTags.words();
 
         assertNotNull(nouns);
-        assertEquals(4, nouns.size());
+        assertEquals(5, nouns.size());
 
     }
 
     @Test
     public void findWordsWhichHaveMultipleTags() {
 
-        Set<Word> nouns = bucket.getAllByAll(nounTag, rude);
+        BucketVisitor allByAll = new HasAllTagsBucketVisitor(nounTag, rude);
+
+        bucket.visit(allByAll);
+        Set<Word> nouns = allByAll.words();
 
         assertNotNull(nouns);
         assertEquals(1, nouns.size());
@@ -67,6 +73,8 @@ public class TaggedWordBucketTests {
         exotic.addTag(adjective);
         Word secretive = bucket.createWord("secretive");
         secretive.addTag(adjective);
+        Word boobies = bucket.createWord("boobies");
+        boobies.addTag(rude);
     }
 
 }
