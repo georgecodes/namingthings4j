@@ -17,7 +17,7 @@ public class HasAllTagsBucketVisitor implements BucketVisitor {
     public void accept(TaggedWordBucket wordBucket) {
         Set<Set<Word>> sets = new HashSet<>();
         for(Tag tag: tags) {
-            sets.add(wordBucket.getBucket().get(tag));
+            sets.add(new HashSet<Word>(wordBucket.getBucket().get(tag)));
         }
         Iterator<Set<Word>> iter = sets.iterator();
         words = iter.next();

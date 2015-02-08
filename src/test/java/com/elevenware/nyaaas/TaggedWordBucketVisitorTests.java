@@ -7,7 +7,7 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public class TaggedWordBucketTests {
+public class TaggedWordBucketVisitorTests {
     
     private TaggedWordBucket bucket;
     private Tag nounTag;
