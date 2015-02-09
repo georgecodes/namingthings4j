@@ -1,4 +1,8 @@
-package com.elevenware.nyaaas;
+package com.elevenware.nyaaas.model;
+
+import com.elevenware.nyaaas.model.Tag;
+import com.elevenware.nyaaas.model.Word;
+import com.elevenware.nyaaas.visitors.BucketVisitor;
 
 import java.util.*;
 

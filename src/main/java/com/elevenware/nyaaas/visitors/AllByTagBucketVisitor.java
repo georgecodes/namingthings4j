@@ -1,9 +1,13 @@
-package com.elevenware.nyaaas;
+package com.elevenware.nyaaas.visitors;
+
+import com.elevenware.nyaaas.model.Tag;
+import com.elevenware.nyaaas.model.TaggedWordBucket;
+import com.elevenware.nyaaas.model.Word;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class AllByTagBucketVisitor implements BucketVisitor {
+public class AllByTagBucketVisitor implements FilteringBucketVisitor {
     private final Tag[] tags;
     private Set<Word> words;
 

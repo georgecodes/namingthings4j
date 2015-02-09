@@ -1,5 +1,11 @@
 package com.elevenware.nyaaas;
 
+import com.elevenware.nyaaas.model.Tag;
+import com.elevenware.nyaaas.model.TaggedWordBucket;
+import com.elevenware.nyaaas.model.Word;
+import com.elevenware.nyaaas.visitors.AllByTagBucketVisitor;
+import com.elevenware.nyaaas.visitors.FilteringBucketVisitor;
+import com.elevenware.nyaaas.visitors.HasAllTagsBucketVisitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +23,7 @@ public class TaggedWordBucketVisitorTests {
     @Test
     public void findWordsByTag() {
 
-        BucketVisitor allByTag = new AllByTagBucketVisitor(nounTag);
+        FilteringBucketVisitor allByTag = new AllByTagBucketVisitor(nounTag);
         bucket.visit(allByTag);
         Set<Word> nouns = allByTag.words();
 
@@ -29,7 +35,7 @@ public class TaggedWordBucketVisitorTests {
     @Test
     public void findWordsByMultipleTags() {
 
-        BucketVisitor allByTags = new AllByTagBucketVisitor(nounTag, rude);
+        FilteringBucketVisitor allByTags = new AllByTagBucketVisitor(nounTag, rude);
 
         bucket.visit(allByTags);
         Set<Word> nouns = allByTags.words();
@@ -42,7 +48,7 @@ public class TaggedWordBucketVisitorTests {
     @Test
     public void findWordsWhichHaveMultipleTags() {
 
-        BucketVisitor allByAll = new HasAllTagsBucketVisitor(nounTag, rude);
+        FilteringBucketVisitor allByAll = new HasAllTagsBucketVisitor(nounTag, rude);
 
         bucket.visit(allByAll);
         Set<Word> nouns = allByAll.words();

@@ -1,4 +1,4 @@
-package com.elevenware.nyaaas;
+package com.elevenware.nyaaas.model;
 
 import java.util.HashSet;
 import java.util.Set;

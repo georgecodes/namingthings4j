@@ -1,4 +1,4 @@
-package com.elevenware.nyaaas;
+package com.elevenware.nyaaas.model;
 
 public class Tag {
 

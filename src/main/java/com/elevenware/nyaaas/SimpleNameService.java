@@ -1,5 +1,8 @@
 package com.elevenware.nyaaas;
 
+import com.elevenware.nyaaas.model.Word;
+import com.elevenware.nyaaas.util.RandomNumber;
+
 public class SimpleNameService implements NameService {
 
     private final WordList adjectiveList;

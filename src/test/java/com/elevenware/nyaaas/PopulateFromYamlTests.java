@@ -1,5 +1,9 @@
 package com.elevenware.nyaaas;
 
+import com.elevenware.nyaaas.model.Tag;
+import com.elevenware.nyaaas.model.TaggedWordBucket;
+import com.elevenware.nyaaas.model.Word;
+import com.elevenware.nyaaas.visitors.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -17,7 +21,7 @@ public class PopulateFromYamlTests {
     @Test
     public void loadsAndTagsFromYaml() {
 
-        BucketVisitor visitor = new AllByTagBucketVisitor(noun);
+        FilteringBucketVisitor visitor = new AllByTagBucketVisitor(noun);
         bucket.visit(visitor);
 
         Set<Word> nouns = visitor.words();
@@ -29,7 +33,7 @@ public class PopulateFromYamlTests {
     @Test
     public void findByLetterAndTag() {
 
-        BucketVisitor visitor = new ByLetterAndTagsBucketVisitor("x", noun);
+        FilteringBucketVisitor visitor = new ByLetterAndTagsBucketVisitor("x", noun);
 
         bucket.visit(visitor);
 
@@ -42,7 +46,7 @@ public class PopulateFromYamlTests {
     @Test
     public void findWordsByTag() {
 
-        BucketVisitor allByTag = new AllByTagBucketVisitor(noun);
+        FilteringBucketVisitor allByTag = new AllByTagBucketVisitor(noun);
         bucket.visit(allByTag);
         Set<Word> nouns = allByTag.words();
 
@@ -54,7 +58,7 @@ public class PopulateFromYamlTests {
     @Test
     public void findWordsByMultipleTags() {
 
-        BucketVisitor allByTags = new AllByTagBucketVisitor(noun, adjective);
+        FilteringBucketVisitor allByTags = new AllByTagBucketVisitor(noun, adjective);
 
         bucket.visit(allByTags);
         Set<Word> nouns = allByTags.words();
@@ -67,7 +71,7 @@ public class PopulateFromYamlTests {
     @Test
     public void findWordsWhichHaveMultipleTags() {
 
-        BucketVisitor allByAll = new HasAllTagsBucketVisitor(noun, rude);
+        FilteringBucketVisitor allByAll = new HasAllTagsBucketVisitor(noun, rude);
 
         bucket.visit(allByAll);
         Set<Word> nouns = allByAll.words();
@@ -83,10 +87,10 @@ public class PopulateFromYamlTests {
         noun = bucket.createTag("noun");
         rude = bucket.createTag("rude");
         adjective = bucket.createTag("adjective");
-        YamlLoader.loadYamlFromClasspath("/wordlists/nouns.yaml", bucket, noun);
-        YamlLoader.loadYamlFromClasspath("/wordlists/adjectives.yaml", bucket, adjective);
-        YamlLoader.loadYamlFromClasspath("/wordlists/rudenouns.yaml", bucket, noun, rude);
-        YamlLoader.loadYamlFromClasspath("/wordlists/rudeadjectives.yaml", bucket, adjective, rude);
+        bucket.visit(new YamlLoadingVisitor("/wordlists/nouns.yaml", noun));
+        bucket.visit(new YamlLoadingVisitor("/wordlists/adjectives.yaml", adjective));
+        bucket.visit(new YamlLoadingVisitor("/wordlists/rudenouns.yaml", noun, rude));
+        bucket.visit(new YamlLoadingVisitor("/wordlists/rudeadjectives.yaml", adjective, rude));
     }
 
 }

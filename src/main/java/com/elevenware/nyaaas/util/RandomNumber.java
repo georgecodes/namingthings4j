@@ -1,4 +1,4 @@
-package com.elevenware.nyaaas;
+package com.elevenware.nyaaas.util;
 
 import java.util.Random;
 
