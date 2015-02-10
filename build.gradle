@@ -21,5 +21,7 @@ repositories {
 
 dependencies {
    compile "org.yaml:snakeyaml:1.13"
+   compile "org.jdbi:jdbi:2.58"
    testCompile "junit:junit:4.11"
+   testCompile "com.h2database:h2:1.4.185"
 }

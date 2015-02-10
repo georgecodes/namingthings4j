@@ -81,6 +81,12 @@ public class PopulateFromYamlTests {
 
     }
 
+    @Test
+    public void findRandomWordWithSpecificTag() {
+
+
+    }
+
     @BeforeClass
     public static void setup() {
         bucket = new TaggedWordBucket();
